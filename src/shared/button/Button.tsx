@@ -9,6 +9,7 @@ type ButtonProps = {
     onClick?: () => void | Promise<void>
     type?: "button" | "submit" | "reset"
     className?: string
+    width?: string
 }
 
 const Button: FC<ButtonProps> = ({
@@ -18,6 +19,7 @@ const Button: FC<ButtonProps> = ({
     onClick: propsOnClick,
     type: propsType = "button",
     className: propsClassName = "",
+    width: propsWidth,
 }) => {
     const [isLoading, setIsLoading] = useState(false)
 
@@ -64,9 +66,16 @@ const Button: FC<ButtonProps> = ({
             onClick={handleClick}
             className={`uicc-btn uicc-btn--${propsVariant} ${propsDisabled || isLoading ? "uicc-btn--disabled" : ""
                 } ${propsClassName}`}
+            style={{
+                width: propsWidth,
+                // maxWidth: propsWidth,
+            }}
         >
             {/* {isLoading ? "Loading..." : formatLabel(propsLabel)} */}
-            {displayLabel}
+            {/* {displayLabel} */}
+            <span className="uicc-btn__label">
+                {displayLabel}
+            </span>
 
         </button>
     )

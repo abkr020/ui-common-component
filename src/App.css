@@ -34,7 +34,23 @@
 
   color: var(--uicc-color-white);
   transition: background-color 0.2s ease, opacity 0.2s ease;
+   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+.uicc-btn__label {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* .uicc-btn {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
 
 /* ============================= */
 /* Variants */

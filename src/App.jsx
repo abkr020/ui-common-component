@@ -32,8 +32,19 @@ function App() {
   return (
     <>
       <div>hi</div>
-      <Button label='-97098?,/.' variant='primary' onClick={handleClick_WithError} />
-      <Button />
+      <div style={{
+        // width:"150px"
+        }}>
+
+      <Button 
+      // label='-9709/ hfo wei. fewf we fwf efw ihewhfwie hfhf eiufh lweiufh iwhfiehuf weiuhfiwue. hf'
+      label='fhe7987000 l k'
+       variant='primary'
+       onClick={handleClick_WithError}
+       width='50px'
+       />
+      </div>
+      {/* <Button /> */}
     </>
   )
 }
