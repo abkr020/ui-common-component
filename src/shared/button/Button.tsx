@@ -19,6 +19,13 @@ const Button: FC<ButtonProps> = ({
     type = "button",
     className = "",
 }) => {
+    // Convert label to Title Case
+    const formatLabel = (text: string) =>
+        text
+            .split(" ")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")
+
     return (
         <button
             type={type}
@@ -26,7 +33,7 @@ const Button: FC<ButtonProps> = ({
             onClick={onClick}
             className={`uicc-btn uicc-btn--${variant} ${disabled ? "uicc-btn--disabled" : ""} ${className}`}
         >
-            {label}
+            {formatLabel(label)}
         </button>
     )
 }
