@@ -1,9 +1,9 @@
-import { useState, type FC } from "react"
+import { useMemo, useState, type FC } from "react"
 
 type ButtonVariant = "primary" | "secondary" | "danger"
 
 type ButtonProps = {
-    label: string
+    label?: string
     variant?: ButtonVariant
     disabled?: boolean
     onClick?: () => void | Promise<void>
@@ -33,7 +33,18 @@ const Button: FC<ButtonProps> = ({
                 .join(" ")
         )
     }
-    const displayLabel = isLoading ? "Loading..." : formatLabel(propsLabel)
+    // const displayLabel = isLoading ? "Loading..." : formatLabel(propsLabel)
+
+    const formattedLabel = useMemo(() => {
+        console.log("label calculate")
+        return propsLabel
+            .split(" ")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")
+    }, [propsLabel])
+
+    const displayLabel = isLoading ? "Loading..." : formattedLabel
+
 
     // Handle click with loading
     const handleClick = async () => {
