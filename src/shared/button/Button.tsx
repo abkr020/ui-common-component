@@ -12,28 +12,35 @@ type ButtonProps = {
 }
 
 const Button: FC<ButtonProps> = ({
-    label,
-    variant = "primary",
-    disabled = false,
-    onClick,
-    type = "button",
-    className = "",
+    label: propsLabel = "",
+    variant: propsVariant = "primary",
+    disabled: propsDisabled = false,
+    onClick: propsOnClick,
+    type: propsType = "button",
+    className: propsClassName = "",
 }) => {
     const [isLoading, setIsLoading] = useState(false)
 
-    // Convert label to Title Case
-    const formatLabel = (text: string) =>
-        text
-            .split(" ")
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ")
+    // Convert propsLabel to Title Case
+    const formatLabel = (text: string) => {
+        console.log("lable calculate");
+
+        return (
+
+            text
+                .split(" ")
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ")
+        )
+    }
+    const displayLabel = isLoading ? "Loading..." : formatLabel(propsLabel)
 
     // Handle click with loading
     const handleClick = async () => {
-        if (!onClick) return
+        if (!propsOnClick || isLoading) return
         try {
             setIsLoading(true)
-            await onClick() // works for async or sync functions
+            await propsOnClick() // works for async or sync functions
         } finally {
             setIsLoading(false)
         }
@@ -41,13 +48,15 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <button
-            type={type}
-            disabled={disabled || isLoading}
+            type={propsType}
+            disabled={propsDisabled || isLoading}
             onClick={handleClick}
-            className={`uicc-btn uicc-btn--${variant} ${disabled || isLoading ? "uicc-btn--disabled" : ""
-                } ${className}`}
+            className={`uicc-btn uicc-btn--${propsVariant} ${propsDisabled || isLoading ? "uicc-btn--disabled" : ""
+                } ${propsClassName}`}
         >
-            {isLoading ? "Loading..." : formatLabel(label)}
+            {/* {isLoading ? "Loading..." : formatLabel(propsLabel)} */}
+            {displayLabel}
+
         </button>
     )
 }

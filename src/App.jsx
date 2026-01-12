@@ -32,7 +32,8 @@ function App() {
   return (
     <>
       <div>hi</div>
-      <Button label='button test with error' variant='primary' onClick={handleClick_WithError} />
+      <Button label='-97098?,/.' variant='primary' onClick={handleClick_WithError} />
+      <Button />
     </>
   )
 }
