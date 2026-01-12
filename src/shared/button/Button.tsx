@@ -3,33 +3,32 @@ import type { FC } from "react"
 type ButtonVariant = "primary" | "secondary" | "danger"
 
 type ButtonProps = {
-    label: string
-    variant?: ButtonVariant
-    disabled?: boolean
-    onClick?: () => void
+  label: string
+  variant?: ButtonVariant
+  disabled?: boolean
+  onClick?: () => void
+  type?: "button" | "submit" | "reset"
+  className?: string
 }
 
 const Button: FC<ButtonProps> = ({
-    label,
-    variant = "primary",
-    disabled = false,
-    onClick,
+  label,
+  variant = "primary",
+  disabled = false,
+  onClick,
+  type = "button",
+  className = "",
 }) => {
-    return (
-        <button
-            disabled={disabled}
-            onClick={onClick}
-            className={`btn btn-${variant}`}
-            style={{
-                padding: "8px 16px",
-                borderRadius: "6px",
-                border: "none",
-                cursor: disabled ? "not-allowed" : "pointer",
-            }}
-        >
-            {label}
-        </button>
-    )
+  return (
+    <button
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+      className={`uicc-btn uicc-btn--${variant} ${disabled ? "uicc-btn--disabled" : ""} ${className}`}
+    >
+      {label}
+    </button>
+  )
 }
 
 export default Button

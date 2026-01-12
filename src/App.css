@@ -1,0 +1,72 @@
+:root {
+  --uicc-btn-padding-y: 8px;
+  --uicc-btn-padding-x: 16px;
+  --uicc-btn-radius: 6px;
+  --uicc-btn-font-size: 14px;
+  --uicc-btn-font-weight: 500;
+
+  --uicc-color-primary: #2563eb;
+  --uicc-color-secondary: #6b7280;
+  --uicc-color-danger: #dc2626;
+
+  --uicc-color-white: #ffffff;
+  --uicc-color-disabled: #9ca3af;
+}
+
+
+/* ============================= */
+/* Base Button */
+/* ============================= */
+
+.uicc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--uicc-btn-padding-y) var(--uicc-btn-padding-x);
+  border-radius: var(--uicc-btn-radius);
+  font-size: var(--uicc-btn-font-size);
+  font-weight: var(--uicc-btn-font-weight);
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  color: var(--uicc-color-white);
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* ============================= */
+/* Variants */
+/* ============================= */
+
+.uicc-btn--primary {
+  background-color: var(--uicc-color-primary);
+}
+
+.uicc-btn--secondary {
+  background-color: var(--uicc-color-secondary);
+}
+
+.uicc-btn--danger {
+  background-color: var(--uicc-color-danger);
+}
+
+/* ============================= */
+/* States */
+/* ============================= */
+
+.uicc-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.uicc-btn:active:not(:disabled) {
+  opacity: 0.85;
+}
+
+.uicc-btn--disabled,
+.uicc-btn:disabled {
+  background-color: var(--uicc-color-disabled);
+  cursor: not-allowed;
+  opacity: 0.7;
+}

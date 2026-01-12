@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div>hi</div>
-      <Button label='a' variant='secondary' />
+      <Button label='button test' variant='primary' />
     </>
   )
 }
