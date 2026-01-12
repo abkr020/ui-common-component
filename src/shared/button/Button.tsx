@@ -1,3 +1,5 @@
+import type { FC } from "react"
+
 type ButtonVariant = "primary" | "secondary" | "danger"
 
 type ButtonProps = {
@@ -7,12 +9,12 @@ type ButtonProps = {
     onClick?: () => void
 }
 
-function Button({
+const Button: FC<ButtonProps> = ({
     label,
     variant = "primary",
     disabled = false,
     onClick,
-}: ButtonProps) {
+}) => {
     return (
         <button
             disabled={disabled}
